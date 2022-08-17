@@ -1,0 +1,20 @@
+import string
+
+def LongestWord(sen):
+    tmp = 0
+    check = 0
+    returning=()
+    sen = sen.split()
+    for i in range(0,len(sen)):
+        for j in range(i,i+1):
+            sen[i]=  sen[i].translate(sen[i].maketrans('','', string.punctuation))
+            tmp = len(sen[i])
+            if tmp > check:
+                check = tmp
+                returning=list(sen[i])
+
+    str1=""
+    sen=str1.join(returning)
+    return sen
+# keep this function call here
+print(LongestWord(input()))
