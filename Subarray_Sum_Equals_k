@@ -1,0 +1,31 @@
+
+from collections import defaultdict
+def countSubarrayswithSumK(a, K):
+    n = len(a)
+    hash = defaultdict(lambda : 0)
+    count = 0
+    sum=0
+    for i in range(n):
+        sum += a[i]
+        if sum == K:
+            count +=1
+        if (sum-K) in hash :
+            count += hash[sum - K]
+        hash[sum] += 1
+
+    return count
+
+print (countSubarrayswithSumK([1,1,1],2))
+# def countSubarrayswithSumK(a, K):
+#     n = len(a)
+#     count = 0
+#     for i in range(n):
+#         for j in range(i, n):
+#             sum = 0
+#             for k in range(i, j + 1):
+#                 sum += a[k]
+#             count += sum == K
+#     return count
+
+
+# print (countSubarrayswithSumK([1,2,3],3))
